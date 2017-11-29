@@ -1,19 +1,9 @@
-// .slick-prev {
-//   left: 20px;
-//   z-index: 1;
-// }
-//
-// .slick-next {
-//   right: 20px;
-//   z-index: 1;
-// }
-//
 .slide {
   // height: 100vh;
   background: gold;
   .left-side, .right-side {
     width: 50%;
-    padding: 60px;
+    padding: 6vw;
     text-align: center;
     // opacity: 0;
   }
@@ -57,7 +47,7 @@
   }
   .right-side {
     float: right;
-    padding: 60px 80px;
+    padding: 6vw 7vw;
   }
 }
 
