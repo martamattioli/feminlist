@@ -1,30 +1,83 @@
 import data from './components/data.js';
+import detectDevice from './components/deviceDetection.js';
 
-// import 'bootstrap-css-only';
 import './scss/style.scss';
 
 const categories = ['podcasts', 'books', 'events', 'tvnfilms', 'website'];
 const sections = ['firstPage', 'secondPage', '3rdPage', '4thPage', '5thPage'];
+let isMobile;
+let turnDeviceContent;
+let $main;
+let $allNavLinks;
 
 function init() {
+  $main = $('main');
+  $allNavLinks = $('a[href*="#"]').not('[href="#"]').not('[href="#0"]');
+
   for (var i = 0; i < categories.length; i++) {
     addMainWrapper(categories[i], i);
   }
+
   $('#fullpage').fullpage({
-    anchors: ['firstPage', 'secondPage', '3rdPage', '4thPage', '5thPage'],
+    anchors: sections,
     onLeave: () => showContent(),
-    afterLoad: function(anchorLink, index){
-      console.log(anchorLink, index);
-      // const circle = '<i class="fa fa-circle" aria-hidden="true"></i>';
-      $('a[href*="#"]').not('[href="#"]').not('[href="#0"]').attr('class', '');
-      $(`a[href*="#${anchorLink}"]`).addClass('active-section');
-      // $(`a[href*="#${anchorLink}"]`).parent().append(circle);
-      // $(`a[href*="#${anchorLink}"]`).prepend(circle);
-    },
+    afterLoad: (anchorLink) => addActiveLink(anchorLink),
     onSlideLeave: () => showContent()
   });
 
+  checkDevice();
+  $(window).on('resize', checkDevice);
+}
+
+function checkDevice() {
+  isMobile = detectDevice.detect(); // this returns true or false if device is mobile
+
+  if (isMobile) {
+    if (window.outerWidth < window.outerHeight) {
+      hideStuff();
+    } else {
+      showStuff();
+    }
+  } else {
+    showStuff();
+  }
+}
+
+function hideStuff() {
+  $('nav').css({'opacity': '0'});
+  $('header').css({'opacity': '0'});
+  $('main').css({'opacity': '0'});
+
+  turnDeviceContent = `
+    <div class="turn-device">
+      <section>
+        <div>
+          <img class="animated rotateInDownLeft infinite" src="src/assets/turn-device.svg">
+          <h2>Please Turn You Device To Landscape</h2>
+        </div>
+      </section>
+    </div>
+  `;
+
+  $('body').append(turnDeviceContent);
+
   showContent();
+}
+
+function showStuff() {
+  if ($('.turn-device')) {
+    $('.turn-device').remove();
+  }
+
+  $('nav').css({'opacity': '1'});
+  $('header').css({'opacity': '1'});
+  $('main').css({'opacity': '1'});
+  showContent();
+}
+
+function addActiveLink(anchorLink){
+  $allNavLinks.attr('class', '');
+  $(`a[href*="#${anchorLink}"]`).addClass('active-section');
 }
 
 function showContent() {
@@ -39,11 +92,11 @@ function showContent() {
 }
 
 function addMainWrapper(category, index) {
-  // data-anchor="${sections[index]}"
   const section = `<div class='${category} section' id='${category}'></div>`;
-  $('main').append(section);
-
   const categoryItem = data[index][category];
+
+  $main.append(section);
+
   for (var i = 0; i < categoryItem.length; i++) {
     addContent(categoryItem[i], category);
   }

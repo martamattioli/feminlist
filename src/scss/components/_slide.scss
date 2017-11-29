@@ -1,6 +1,10 @@
+#fullpage {
+  transition: all linear 0.3s;
+}
+
 .slide {
   // height: 100vh;
-  background: gold;
+  background: #cf9d31;
   .left-side, .right-side {
     width: 50%;
     padding: 6vw;
@@ -84,6 +88,24 @@
 
 .fadeInUp {
   -webkit-animation-duration: 1.5s;
-  // -webkit-animation-delay: 1s;
-  // -webkit-animation-iteration-count: 5;
+}
+
+.rotateInDownLeft {
+  // animation-delay: 3s;
+  animation-duration: 3s;
+  animation-name: rotateInDownLeftCustom;
+}
+
+@keyframes rotateInDownLeftCustom {
+  from {
+    transform-origin: left bottom;
+    transform: rotate3d(0, 0, 1, -10deg);
+    opacity: 1;
+  }
+
+  to {
+    transform-origin: left bottom;
+    transform: none;
+    opacity: 1;
+  }
 }

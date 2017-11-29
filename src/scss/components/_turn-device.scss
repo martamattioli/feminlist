@@ -1,0 +1,29 @@
+.turn-device {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background: #f976b1;
+  section {
+    height: 100%;
+    position: relative;
+    text-align: center;
+    div {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      img {
+        width: 95%;
+      }
+      h2 {
+        margin-top: 60px;
+        font-size: 7vw;
+        line-height: 7vw;
+        font-weight: 900;
+      }
+    }
+  }
+}
