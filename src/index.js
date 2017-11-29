@@ -33,13 +33,9 @@ function checkDevice() {
   isMobile = detectDevice.detect(); // this returns true or false if device is mobile
 
   if (isMobile) {
-    if (window.outerWidth < window.outerHeight) {
-      hideStuff();
-    } else {
-      showStuff();
-    }
+    ($(window).width() < $(window).height()) ? hideStuff() : showStuff();
   } else {
-    showStuff();
+    ($(window).width() < $(window).height()) ? hideStuff() : showStuff();
   }
 }
 
