@@ -48,7 +48,7 @@ function hideStuff() {
     <div class="turn-device">
       <section>
         <div>
-          <img class="animated rotateInDownLeft infinite" src="src/assets/turn-device.svg">
+          <img class="animated rotateInDownLeft infinite" src="assets/turn-device.svg">
           <h2>Please Turn You Device To Landscape</h2>
         </div>
       </section>
