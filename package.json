@@ -8,7 +8,8 @@
     "node": "8.x.x"
   },
   "scripts": {
-    "start": "webpack-dev-server"
+    "start": "webpack-dev-server",
+    "heroku-postbluid": "webpack -p"
   },
   "dependencies": {
     "bootstrap": "^3.3.7",
