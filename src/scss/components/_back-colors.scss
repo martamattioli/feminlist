@@ -1,0 +1,84 @@
+.podcasts .fp-slide:nth-child(odd) {
+  .left-side {
+    background: #cf9d31;
+  }
+  .right-side {
+    background: #f976b1;
+  }
+}
+.podcasts .fp-slide:nth-child(even) {
+  .left-side {
+    background: #f976b1;
+  }
+  .right-side {
+    background: #cf9d31;
+  }
+}
+
+.books .fp-slide:nth-child(odd) {
+  .left-side {
+    background: #68e2bd;
+  }
+  .right-side {
+    background: #0078ff;
+  }
+}
+.books .fp-slide:nth-child(even) {
+  .left-side {
+    background: #0078ff;
+  }
+  .right-side {
+    background: #68e2bd;
+  }
+}
+
+.events .fp-slide:nth-child(odd) {
+  .left-side {
+    background: #ff4000;
+  }
+  .right-side {
+    background: #ffa8aa;
+  }
+}
+.events .fp-slide:nth-child(even) {
+  .left-side {
+    background: #ffa8aa;
+  }
+  .right-side {
+    background: #ff4000;
+  }
+}
+
+.tvnfilms .fp-slide:nth-child(odd) {
+  .left-side {
+    background: #ffa07d;
+  }
+  .right-side {
+    background: #00bd7c;
+  }
+}
+.tvnfilms .fp-slide:nth-child(even) {
+  .left-side {
+    background: #00bd7c;
+  }
+  .right-side {
+    background: #ffa07d;
+  }
+}
+
+.website .fp-slide:nth-child(odd) {
+  .left-side {
+    background: #ffa601;
+  }
+  .right-side {
+    background: #cc5675;
+  }
+}
+.website .fp-slide:nth-child(even) {
+  .left-side {
+    background: #cc5675;
+  }
+  .right-side {
+    background: #ffa601;
+  }
+}

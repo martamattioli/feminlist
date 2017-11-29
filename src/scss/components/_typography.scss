@@ -1,0 +1,52 @@
+body {
+  font-family: $bodyFont;
+  text-transform: uppercase;
+  color: black;
+  font-weight: 600;
+}
+
+a {
+  color: black;
+}
+
+.right-side p {
+  text-transform: none;
+  font-size: 23px;
+  line-height: 40px;
+  // letter-spacing: 1px;
+}
+
+h1 {
+  font-size: 100px;
+  font-weight: 900;
+  line-height: 90%;
+}
+
+h2 {
+  font-size: 25px;
+  letter-spacing: 3px;
+  padding: 30px 0 10px 0;
+  line-height: 40px;
+}
+
+h3 {
+  font-size: 14px;
+  letter-spacing: 2px;
+  padding: 25px;
+}
+
+.outside-link {
+  font-size: 13px;
+  letter-spacing: 2px;
+}
+
+nav {
+  a {
+    font-size: 13px;
+    letter-spacing: 1px;
+  }
+  p {
+    font-size: 12px;
+    letter-spacing: 2px;
+  }
+}

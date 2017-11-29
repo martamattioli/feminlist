@@ -1,0 +1,99 @@
+// .slick-prev {
+//   left: 20px;
+//   z-index: 1;
+// }
+//
+// .slick-next {
+//   right: 20px;
+//   z-index: 1;
+// }
+//
+.slide {
+  // height: 100vh;
+  background: gold;
+  .left-side, .right-side {
+    width: 50%;
+    padding: 60px;
+    text-align: center;
+    // opacity: 0;
+  }
+  .left-side div, .right-side div {
+    height: 100vh;
+    position: relative;
+    section {
+      position: absolute;
+      width: 100%;
+      &:first-child {
+        top: 40%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+      &:nth-child(2) {
+        bottom: 100px;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+    }
+  }
+  .left-side {
+    float: left;
+    .outside-link {
+      text-decoration: none;
+      display: inline-block;
+      // border-bottom: solid 2px black;
+      &::after {
+        content: '';
+        display: block;
+        width: 100%;
+        height: 2px;
+        background: #000;
+        transition: width .3s;
+      }
+      &:hover::after {
+        width: 0;
+        //transition: width .3s;
+      }
+    }
+  }
+  .right-side {
+    float: right;
+    padding: 60px 80px;
+  }
+}
+
+.fp-controlArrow.fp-next {
+  border-width: 0;
+  margin-right: 10px;
+  &::before {
+    content: "\f105";
+    font-family: FontAwesome;
+    font-size: 25px;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
+
+.fp-controlArrow.fp-prev {
+  border-width: 0;
+  // margin-left: 20px;
+  &::before {
+    content: "\f104";
+    font-family: FontAwesome;
+    font-size: 25px;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
+
+.fp-table .fp-tableCell .left-side div, .fp-table .fp-tableCell .right-side div {
+  opacity: 0;
+  transition: all linear 3s;
+}
+
+.fadeInUp {
+  -webkit-animation-duration: 1.5s;
+  // -webkit-animation-delay: 1s;
+  // -webkit-animation-iteration-count: 5;
+}
