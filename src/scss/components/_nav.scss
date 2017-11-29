@@ -60,15 +60,15 @@ nav {
     &:nth-child(2) {
       position: fixed;
       z-index: 1;
-      right: 70px;
-      bottom: 40px;
+      right: 6.3vw;
+      bottom: 3.9vw;
       // position: relative;
       img {
         transform: scaleX(-1);
         position: fixed;
-        width: 20px;
-        bottom: 38px;
-        right: 47px;
+        width: 1.4vw;
+        bottom: 3.8vw;
+        right: 4.5vw;
       }
     }
     a {
