@@ -9,11 +9,12 @@
   },
   "scripts": {
     "start": "webpack-dev-server",
-    "heroku-postbluid": "webpack -p"
+    "heroku-postbluid": "./node_modules/webpack/bin/webpack.js -p --progress && node server.js"
   },
   "dependencies": {
     "bootstrap": "^3.3.7",
-    "bootstrap-css-only": "^3.3.7"
+    "bootstrap-css-only": "^3.3.7",
+    "express": "^4.16.2"
   },
   "devDependencies": {
     "babel-core": "^6.25.0",
