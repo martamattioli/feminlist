@@ -16,7 +16,8 @@
     "bootstrap-css-only": "^3.3.7",
     "cors": "^2.8.4",
     "express": "^4.16.2",
-    "google-spreadsheet-to-json": "^1.0.0"
+    "google-spreadsheet-to-json": "^1.0.0",
+    "request-promise": "^4.2.2"
   },
   "devDependencies": {
     "babel-core": "^6.25.0",
