@@ -1,18 +1,3 @@
-@mixin hoverLink {
-  &::after {
-    content: '';
-    display: block;
-    width: 0;
-    height: 2px;
-    background: #000;
-    transition: width .3s;
-  }
-  &:hover::after {
-    width: 100%;
-    //transition: width .3s;
-  }
-}
-
 header {
   position: fixed;
   width: 150px;
@@ -20,6 +5,8 @@ header {
   top: 50%;
   transform: translate(-50%, -50%);
   z-index: 1;
+  opacity: 1;
+  transition: opacity 1s ease-out;
   li {
     height: 15vh;
     position: relative;
@@ -29,24 +16,44 @@ header {
       left: 50%;
       transform: translate(-50%,-50%);
       @include hoverLink;
-      &.active-section:after {
-        // margin-left: 17px;
-      }
-      &.active-section::before {
-        content: '\2022';
-        content: '\f111';
-        font-family: FontAwesome;
-        margin-right: 5px;
-      }
-      &.active-section:hover::after {
-        width: 0;
-      }
       text-decoration: none;
+    }
+    &.active-li:after {
+      // margin-left: 17px;
+    }
+    &.active-li::before {
+      content: '\2022';
+      content: '\f111';
+      font-family: FontAwesome;
+      // margin-right: 20px;
+      position:absolute;
+      font-size: 10px;
+      top: 50%;
+      left:30px;
+      transform: translate(-50%, -50%);
+      opacity: 0;
+      transition: opacity 0.2s ease-out;
+    }
+    &.show:before {
+      opacity: 1;
+    }
+    &.move-up {
+      top: -100%;
+    }
+    &.move-down {
+      top: 150%;
+    }
+    &.active-li:hover::after {
+      width: 0;
     }
     i {
       margin-right: 5px;
     }
   }
+}
+
+.hide-nav {
+  opacity: 0!important;
 }
 
 nav {

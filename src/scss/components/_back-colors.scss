@@ -5,6 +5,10 @@
   .right-side {
     background: #f976b1;
   }
+
+  // .pagination {
+  //   background: #f976b1;
+  // }
 }
 .podcasts .fp-slide:nth-child(even) {
   .left-side {
@@ -13,6 +17,10 @@
   .right-side {
     background: #cf9d31;
   }
+
+  // .pagination {
+  //   background: #f976b1;
+  // }
 }
 
 .books .fp-slide:nth-child(odd) {
@@ -22,6 +30,10 @@
   .right-side {
     background: #0078ff;
   }
+
+  // .pagination {
+  //   background: #0078ff;
+  // }
 }
 .books .fp-slide:nth-child(even) {
   .left-side {
@@ -30,6 +42,10 @@
   .right-side {
     background: #68e2bd;
   }
+
+  // .pagination {
+  //   background: #0078ff;
+  // }
 }
 
 .events .fp-slide:nth-child(odd) {
@@ -39,6 +55,10 @@
   .right-side {
     background: #ffa8aa;
   }
+
+  // .pagination {
+  //   background: #ffa8aa;
+  // }
 }
 .events .fp-slide:nth-child(even) {
   .left-side {
@@ -47,6 +67,10 @@
   .right-side {
     background: #ff4000;
   }
+
+  // .pagination {
+  //   background: #ffa8aa;
+  // }
 }
 
 .tvnfilms .fp-slide:nth-child(odd) {
@@ -56,6 +80,10 @@
   .right-side {
     background: #00bd7c;
   }
+
+  // .pagination {
+  //   background: #00bd7c;
+  // }
 }
 .tvnfilms .fp-slide:nth-child(even) {
   .left-side {
@@ -64,21 +92,33 @@
   .right-side {
     background: #ffa07d;
   }
+
+  // .pagination {
+  //   background: #00bd7c;
+  // }
 }
 
-.website .fp-slide:nth-child(odd) {
+.websites .fp-slide:nth-child(odd) {
   .left-side {
     background: #ffa601;
   }
   .right-side {
     background: #cc5675;
   }
+
+  // .pagination {
+  //   background: #cc5675;
+  // }
 }
-.website .fp-slide:nth-child(even) {
+.websites .fp-slide:nth-child(even) {
   .left-side {
     background: #cc5675;
   }
   .right-side {
     background: #ffa601;
   }
+
+  // .pagination {
+  //   background: #cc5675;
+  // }
 }

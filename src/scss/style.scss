@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Barlow+Semi+Condensed:500,600,900');
 @import "/helpers/reset";
 @import "/helpers/variables";
+@import "/helpers/mixins";
 
 * {
   box-sizing: border-box;
@@ -11,3 +12,4 @@
 @import "/components/slide";
 @import "/components/nav";
 @import "/components/turn-device";
+@import "/components/about";

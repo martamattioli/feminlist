@@ -1,58 +1,78 @@
+body {
+  background-color: #cf9d31; 
+}
+
+main {
+  background: #cf9d31;
+}
+
+.fp-tableCell {
+  display: flex;
+  background: #cf9d31;
+  position: relative;
+
+  .half-side {
+    width: 50%;
+    display: flex;
+    padding: 60px;
+    text-align: center;
+    .flex-container {
+      display: flex;
+      flex-direction: column;
+      align-content: center;
+      justify-content: space-between;
+      width: 100%;
+    }
+
+    .category {
+      margin-bottom: 10px;
+    }
+  }
+
+  .left-side h1 {
+    -webkit-hyphens: auto;
+    -moz-hyphens: auto;
+    -ms-hyphens: auto;
+    hyphens: auto;
+  }
+
+  .right-side {
+    p {
+      align-self: center;
+    }
+  }
+
+  .link-container {
+    display: inline-block;
+  }
+
+  .outside-link {
+    @include hoverLink;
+    text-decoration: none;
+    display: inline-block;
+  }
+
+  .pagination {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 50%;
+  }
+}
+
 #fullpage {
   transition: all linear 0.3s;
 }
 
-.slide {
-  // height: 100vh;
-  background: #cf9d31;
-  .left-side, .right-side {
-    width: 50%;
-    padding: 6vw;
-    text-align: center;
-    // opacity: 0;
-  }
-  .left-side div, .right-side div {
-    height: 100vh;
-    position: relative;
-    section {
-      position: absolute;
-      width: 100%;
-      &:first-child {
-        top: 40%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-      }
-      &:nth-child(2) {
-        bottom: 100px;
-        left: 50%;
-        transform: translateX(-50%);
-      }
-    }
-  }
-  .left-side {
-    float: left;
-    .outside-link {
-      text-decoration: none;
-      display: inline-block;
-      // border-bottom: solid 2px black;
-      &::after {
-        content: '';
-        display: block;
-        width: 100%;
-        height: 2px;
-        background: #000;
-        transition: width .3s;
-      }
-      &:hover::after {
-        width: 0;
-        //transition: width .3s;
-      }
-    }
-  }
-  .right-side {
-    float: right;
-    padding: 6vw 7vw;
-  }
+.fp-controlArrow {
+  margin: 0;
+
 }
 
 .fp-controlArrow.fp-next {
@@ -86,12 +106,50 @@
   transition: all linear 3s;
 }
 
+// .fadeInUp {
+//   -webkit-animation-duration: 1s;
+// }
+
+@keyframes fadeInUp {
+    from {
+        transform: translate3d(0,40px,0)
+    }
+
+    to {
+        transform: translate3d(0,0,0);
+        opacity: 1
+    }
+}
+
+@-webkit-keyframes fadeInUp {
+    from {
+        transform: translate3d(0,40px,0)
+    }
+
+    to {
+        transform: translate3d(0,0,0);
+        opacity: 1
+    }
+}
+
+.animated {
+    animation-duration: 1s;
+    animation-fill-mode: both;
+    -webkit-animation-duration: 1s;
+    -webkit-animation-fill-mode: both
+}
+
+.animatedFadeInUp {
+    opacity: 0
+}
+
 .fadeInUp {
-  -webkit-animation-duration: 1.5s;
+    opacity: 0;
+    animation-name: fadeInUp;
+    -webkit-animation-name: fadeInUp;
 }
 
 .rotateInDownLeft {
-  // animation-delay: 3s;
   animation-duration: 3s;
   animation-name: rotateInDownLeftCustom;
 }
