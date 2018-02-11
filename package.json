@@ -12,11 +12,14 @@
     "heroku-postbluid": "./node_modules/webpack/bin/webpack.js -p --progress && node server.js"
   },
   "dependencies": {
+    "bluebird": "^3.5.1",
     "bootstrap": "^3.3.7",
     "bootstrap-css-only": "^3.3.7",
     "cors": "^2.8.4",
     "express": "^4.16.2",
     "google-spreadsheet-to-json": "^1.0.0",
+    "mongoose": "^5.0.4",
+    "morgan": "^1.9.0",
     "request-promise": "^4.2.2"
   },
   "devDependencies": {

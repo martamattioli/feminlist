@@ -13,23 +13,7 @@ import './scss/style.scss';
 })(jQuery);
 
 window.app = {
-  data: {
-    podcasts: {
-      id: '1W1QCRIeClvIj7Auk1Mr2CIMEPTetIUYjxS2zEu0RmrI'
-    },
-    books: {
-      id: '1GIf9a5SVqmbJCG3n3mMiovIr7tYUI6QR2dJAI5UTVvU'
-    },
-    events: {
-      id: '1aC8Bu2hHYKeArktUZhqT5fRClpR5wXhEZJ9f5BCe_t8'
-    },
-    tvnfilms: {
-      id: '1uuDbHBfYFbtsMH07QKETxn7L0g6ZTtxStBrrurheekQ'
-    },
-    websites: {
-      id: '19b3se4BuF7FZt6mTkK94IiyLqwCbB9BNKMaHcYPCQQ0'
-    }
-  },
+  data: {},
   countMs: 0,
   countMsInterval: null,
   countProgress: 0,
@@ -46,7 +30,7 @@ window.app = {
     this.sections = navLinks.map(section => $(section).attr('href').substring(1));
     this.shortSections = this.sections.map(section => section.substring(6));
     this.fetchData();
-    this.countMsInterval = setInterval(this.checkLoadingTime.bind(this), 10);
+    // this.countMsInterval = setInterval(this.checkLoadingTime.bind(this), 10);
 
     this.checkDevice();
   },
@@ -54,15 +38,15 @@ window.app = {
   fetchData() {
     const infos = this.data;
     const that = this;
-    for (const key in infos) {
-      $
-        .ajax({
-          method: 'GET',
-          url: `https://spreadsheets.google.com/feeds/list/${infos[key].id}/od6/public/values?alt=json`,
-          format: 'json'
-        })
-        .done(that.addWrapper.bind(this));
-    }
+    $
+      .get('http://localhost:4000/api/docs')
+      .done((res) => {
+        that.data = res;
+        for (const key in res) {
+          this.countProgress++;
+          that.addWrapper(key);
+        }
+      });
   },
 
   checkLoadingTime() {
@@ -73,27 +57,19 @@ window.app = {
     }
   },
 
-  addWrapper(data) {
-    const section = data.feed;
-    const sectionName = section.title.$t;
+  addWrapper(name) {
+    this.data[name].wrapper = `<div class="${(name).toLowerCase()} section" id="${(name).toLowerCase()}"></div>`;
+    this.data[name].slides = [];
 
-    this.data[sectionName].wrapper = `<div class='${(sectionName).toLowerCase()} section' id='${(sectionName).toLowerCase()}'></div>`;
-    this.data[sectionName].slides = [];
-
-    this.addSlide(section);
-
-    if (this.countProgress === 4) {
-      this.fetchOver = true;
-    } else {
-      this.countProgress++;
-    }
+    this.addSlide(name);
   },
 
-  addSlide(section) {
-    const jsonEntries = section.entry;
-    const slides = this.data[section.title.$t].slides;
-    for (let i = 0; i < jsonEntries.length; i++) {
-      const entry = jsonEntries[i];
+  addSlide(name) {
+    const entries = this.data[name].entries;
+    const slides = this.data[name].slides;
+
+    for (let i = 0; i < entries.length; i++) {
+      const entry = entries[i];
 
       const slide = `
         <div class="slide content-slide" id="${i}">
@@ -101,39 +77,41 @@ window.app = {
             <div class="flex-container">
               <div></div>
               <div>
-              <h3 class="category">Category: ${entry.gsx$category.$t}</h3>
-                <h1 class="title">${entry.gsx$title.$t}</h1>
-                <h2 class="author">${entry.gsx$credits.$t}</h2>
-                <h3 class="extra-details">${entry.gsx$extrainfotext.$t}: ${entry.gsx$extrainfo.$t}</h3>
+              <h3 class="category">Category: ${entry.category}</h3>
+                <h1 class="title">${entry.title}</h1>
+                <h2 class="author">${entry.credits}</h2>
+                <h3 class="extra-details">${entry.extrainfotext}: ${entry.extrainfo}</h3>
               </div>
               <div class="link-container">
                 <a
-                  href="${entry.gsx$linkone.$t}"
+                  href="${entry.linkone}"
                   class="outside-link"
                   target="_blank"
-                >${entry.gsx$linkonetext.$t}</a>
+                >${entry.linkonetext}</a>
               </div>
             </div>
           </div>
           <div class="right-side half-side">
             <div class="flex-container">
               <div></div>
-              <p class="description">${entry.gsx$description.$t}</p>
+              <p class="description">${entry.description}</p>
               <div class="link-container">
                 <a
-                  href="${entry.gsx$linktwo.$t}"
+                  href="${entry.linktwo}"
                   class="outside-link"
                   target="_blank"
-                >${entry.gsx$linktwotext.$t}</a>
+                >${entry.linktwotext}</a>
               </div>
             </div>
           </div>
           <!-- <div class="pagination">
-            <p>${i+1}/${jsonEntries.length}</p>
+            <p>${i+1}/${entries.length}</p>
           </div> -->
         </div>`;
 
       slides[i] = slide;
+
+      if (this.countProgress === 5 && i === entries.length - 1) this.setMarkup();
     }
   },
 
@@ -171,7 +149,7 @@ window.app = {
       afterLoad: (anchorLink) => this.addActiveLink(anchorLink)
     });
 
-
+    this.checkContent();
   },
 
   showContent(index, nextIndex, direction, leavingSection, app) { // show content on slide change
