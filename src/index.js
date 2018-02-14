@@ -21,18 +21,37 @@ window.app = {
   sections: null,
   shortSections: null,
   isMobile: detectDevice.detect(),
-  main: $('main'),
+  main: $('.main-container'),
   turnDeviceContent: '',
 
   init() {
     const navLinks = $('.nav-link').toArray();
+    this.aboutLink = $('#about');
+    this.aboutSection = $('.about');
+    this.enter = $('#show-slides');
 
     this.sections = navLinks.map(section => $(section).attr('href').substring(1));
     this.shortSections = this.sections.map(section => section.substring(6));
     this.fetchData();
-    // this.countMsInterval = setInterval(this.checkLoadingTime.bind(this), 10);
+
+    this.aboutLink.on('click', (e) => {
+      e.preventDefault();
+      window.history.pushState(null, null, '/about');
+      this.toggleAbout();
+    });
+
+    this.enter.on('click', this.enterSite.bind(this));
 
     this.checkDevice();
+  },
+
+  enterSite() {
+    this.toggleAbout();
+    window.history.pushState(null, null, '/');
+    this.addActiveLink('topic-podcasts');
+    this.showContent();
+    this.jumpHome();
+    $.fn.fullpage.setScrollingSpeed(700);
   },
 
   fetchData() {
@@ -47,14 +66,6 @@ window.app = {
           that.addWrapper(key);
         }
       });
-  },
-
-  checkLoadingTime() {
-    this.countMs++;
-    if (this.fetchOver) {
-      clearInterval(this.countMsInterval);
-      this.setMarkup();
-    }
   },
 
   addWrapper(name) {
@@ -116,8 +127,6 @@ window.app = {
   },
 
   setMarkup() {
-    console.log('in setMarkup');
-
     const data = this.data;
 
     for (const key in data) {
@@ -126,9 +135,6 @@ window.app = {
     }
 
     this.initializeSlider();
-
-    this.jumpHome();
-    $.fn.fullpage.setScrollingSpeed(700);
   },
 
   initializeSlider() {
@@ -137,7 +143,6 @@ window.app = {
       anchors: this.sections,
       onLeave: function(index, nextIndex, direction) {
         const leavingSection = $(this);
-        console.log('on leave');
         if (direction === 'up') {
           $(leavingSection).addClass('move-up');
         } else {
@@ -148,6 +153,8 @@ window.app = {
       onSlideLeave: (anchorLink, index, slideIndex, direction, nextSlideIndex) => this.checkContent(anchorLink, index, slideIndex, direction, nextSlideIndex),
       afterLoad: (anchorLink) => this.addActiveLink(anchorLink)
     });
+
+    window.history.pushState(null, null, '/');
 
     this.checkContent();
   },
@@ -168,9 +175,14 @@ window.app = {
     this.sectionDivs = $('.section').toArray();
     $('.nav-link').removeClass('active-section');
     $('#menu li').removeClass('active-li');
-    $(`a[href*="#${anchorLink}"]`).addClass('active-section');
-    $('.active-section').parent().addClass('active-li');
-    $('.active-li').addClass('show');
+
+    setTimeout(() => {
+      $(`a[href*="#${anchorLink}"]`).addClass('active-section');
+      $('.active-section').parent().addClass('active-li');
+      $('.active-li').addClass('show');
+    }, 400);
+
+    console.log($(`a[href*="#${anchorLink}"]`));
   },
 
   checkContent(anchorLink, index, slideIndex, direction, nextSlideIndex) {
@@ -190,18 +202,19 @@ window.app = {
     const isMobile = detectDevice.detect(); // this returns true or false if device is mobile
 
     if (isMobile) {
-      ($(window).width() < $(window).height()) ? this.hideStuff() : this.showStuff();
+      ($(window).width() < $(window).height()) ? this.hideStuff('mobile') : this.showStuff();
     } else {
-      ($(window).width() < $(window).height()) ? this.hideStuff() : this.showStuff();
+      ($(window).width() < $(window).height()) ? this.hideStuff('mobile') : this.showStuff();
     }
   },
 
-  hideStuff() {
-    $('nav').css({'opacity': '0'});
+  hideStuff(what) {
     $('header').css({'opacity': '0'});
-    $('main').css({'opacity': '0'});
+    this.main.css({'opacity': '0'});
 
-    this.turnDeviceContent = `
+    if (what === 'mobile') {
+      $('nav').css({'opacity': '0'});
+      this.turnDeviceContent = `
       <div class="turn-device">
         <section>
           <div>
@@ -210,9 +223,10 @@ window.app = {
           </div>
         </section>
       </div>
-    `;
+      `;
 
-    $('body').append(this.turnDeviceContent);
+      $('main').append(this.turnDeviceContent);
+    }
 
     this.showContent();
   },
@@ -225,13 +239,19 @@ window.app = {
 
     $('nav').css({'opacity': '1'});
     $('header').css({'opacity': '1'});
-    $('main').css({'opacity': '1'});
+    this.main.css({'opacity': '1'});
     this.showContent();
   },
 
   jumpHome() {
     $.fn.fullpage.setScrollingSpeed(0);
     location.href = '#topic-podcasts';
+  },
+
+  toggleAbout() {
+    (this.aboutSection.hasClass('hide')) ?
+      this.aboutSection.removeClass('hide') :
+      this.aboutSection.addClass('hide');
   }
 
 };
