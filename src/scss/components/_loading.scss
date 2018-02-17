@@ -1,0 +1,17 @@
+.loading {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background: $black;
+  z-index: 2;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  h1 {
+    display: none;
+    color: $bright-pink;
+    font-size: 10vw;
+  }
+}

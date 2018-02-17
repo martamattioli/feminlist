@@ -12,4 +12,9 @@
 @import "/components/slide";
 @import "/components/nav";
 @import "/components/turn-device";
+@import "/components/loading";
 @import "/components/about";
+
+.hide {
+  display: none;
+}

@@ -1,5 +1,5 @@
 body {
-  background-color: #cf9d31; 
+  background-color: #cf9d31;
 }
 
 main {
@@ -18,6 +18,7 @@ main {
     text-align: center;
     .flex-container {
       display: flex;
+      opacity: 0;
       flex-direction: column;
       align-content: center;
       justify-content: space-between;
@@ -101,7 +102,8 @@ main {
   }
 }
 
-.fp-table .fp-tableCell .left-side div, .fp-table .fp-tableCell .right-side div {
+.fp-table .fp-tableCell .left-side .flex-content,
+.fp-table .fp-tableCell .right-side .flex-content {
   opacity: 0;
   transition: all linear 3s;
 }

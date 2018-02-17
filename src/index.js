@@ -2,24 +2,23 @@ import $ from 'jquery';
 import 'fullpage.js/dist/jquery.fullpage';
 import 'fullpage.js/dist/jquery.fullpage.css';
 
-import slides from './components/slides';
-import detectDevice from './components/deviceDetection';
+import app from './components/app';
+// import detectDevice from './components/deviceDetection';
 
 import './scss/style.scss';
 
 $(document).ready(function() {
-  window.app.init();
-  $(window).on('resize', window.app.checkDevice.bind(window.app));
+  app.init();
+
+  // $(window).on('resize', window.app.checkDevice.bind(window.app));
 });
 
 window.app = {
   data: {},
-  countMs: 0,
-  countMsInterval: null,
   countProgress: 0,
   sections: null,
   shortSections: null,
-  isMobile: detectDevice.detect(),
+  // isMobile: detectDevice.detect(),
   main: $('.main-container'),
   turnDeviceContent: '',
 
@@ -61,88 +60,88 @@ window.app = {
     $.fn.fullpage.setScrollingSpeed(700);
   },
 
-  fetchData() {
-    const infos = this.data;
-    const that = this;
-    $
-      .get('http://localhost:4000/api/docs')
-      .done((res) => {
-        that.data = res;
-        for (const key in res) {
-          this.countProgress++;
-          that.addWrapper(key);
-        }
-      });
-  },
+  // fetchData() {
+  //   const infos = this.data;
+  //   const that = this;
+  //   $
+  //     .get('http://localhost:4000/api/docs')
+  //     .done((res) => {
+  //       that.data = res;
+  //       for (const key in res) {
+  //         this.countProgress++;
+  //         that.addWrapper(key);
+  //       }
+  //     });
+  // },
 
-  addWrapper(name) {
-    this.data[name].wrapper = `<div class="${(name).toLowerCase()} section" id="${(name).toLowerCase()}"></div>`;
-    this.data[name].slides = [];
-
-    this.addSlide(name);
-  },
-
-  addSlide(name) {
-    const entries = this.data[name].entries;
-    const slides = this.data[name].slides;
-
-    for (let i = 0; i < entries.length; i++) {
-      const entry = entries[i];
-
-      const slide = `
-        <div class="slide content-slide" id="${i}">
-          <div class="left-side half-side">
-            <div class="flex-container">
-              <div></div>
-              <div>
-              <h3 class="category">Category: ${entry.category}</h3>
-                <h1 class="title">${entry.title}</h1>
-                <h2 class="author">${entry.credits}</h2>
-                <h3 class="extra-details">${entry.extrainfotext}: ${entry.extrainfo}</h3>
-              </div>
-              <div class="link-container">
-                <a
-                  href="${entry.linkone}"
-                  class="outside-link"
-                  target="_blank"
-                >${entry.linkonetext}</a>
-              </div>
-            </div>
-          </div>
-          <div class="right-side half-side">
-            <div class="flex-container">
-              <div></div>
-              <p class="description">${entry.description}</p>
-              <div class="link-container">
-                <a
-                  href="${entry.linktwo}"
-                  class="outside-link"
-                  target="_blank"
-                >${entry.linktwotext}</a>
-              </div>
-            </div>
-          </div>
-          <!-- <div class="pagination">
-            <p>${i+1}/${entries.length}</p>
-          </div> -->
-        </div>`;
-
-      slides[i] = slide;
-
-      if (this.countProgress === 5 && i === entries.length - 1) this.setMarkup();
-    }
-  },
-
-  setMarkup() {
-    const data = this.data;
-
-    for (const key in data) {
-      $(this.main).append(data[key].wrapper);
-      $(`#${key}`).append(data[key].slides);
-    }
-
-    this.initializeSlider();
-  },
+  // addWrapper(name) {
+  //   this.data[name].wrapper = `<div class="${(name).toLowerCase()} section" id="${(name).toLowerCase()}"></div>`;
+  //   this.data[name].slides = [];
+  //
+  //   this.addSlide(name);
+  // },
+  //
+  // addSlide(name) {
+  //   const entries = this.data[name].entries;
+  //   const slides = this.data[name].slides;
+  //
+  //   for (let i = 0; i < entries.length; i++) {
+  //     const entry = entries[i];
+  //
+  //     const slide = `
+  //       <div class="slide content-slide" id="${i}">
+  //         <div class="left-side half-side">
+  //           <div class="flex-container">
+  //             <div></div>
+  //             <div>
+  //             <h3 class="category">Category: ${entry.category}</h3>
+  //               <h1 class="title">${entry.title}</h1>
+  //               <h2 class="author">${entry.credits}</h2>
+  //               <h3 class="extra-details">${entry.extrainfotext}: ${entry.extrainfo}</h3>
+  //             </div>
+  //             <div class="link-container">
+  //               <a
+  //                 href="${entry.linkone}"
+  //                 class="outside-link"
+  //                 target="_blank"
+  //               >${entry.linkonetext}</a>
+  //             </div>
+  //           </div>
+  //         </div>
+  //         <div class="right-side half-side">
+  //           <div class="flex-container">
+  //             <div></div>
+  //             <p class="description">${entry.description}</p>
+  //             <div class="link-container">
+  //               <a
+  //                 href="${entry.linktwo}"
+  //                 class="outside-link"
+  //                 target="_blank"
+  //               >${entry.linktwotext}</a>
+  //             </div>
+  //           </div>
+  //         </div>
+  //         <!-- <div class="pagination">
+  //           <p>${i+1}/${entries.length}</p>
+  //         </div> -->
+  //       </div>`;
+  //
+  //     slides[i] = slide;
+  //
+  //     if (this.countProgress === 5 && i === entries.length - 1) this.setMarkup();
+  //   }
+  // },
+  //
+  // setMarkup() {
+  //   const data = this.data;
+  //
+  //   for (const key in data) {
+  //     $(this.main).append(data[key].wrapper);
+  //     $(`#${key}`).append(data[key].slides);
+  //   }
+  //
+  //   this.initializeSlider();
+  // },
 
   initializeSlider() {
     const that = this;
