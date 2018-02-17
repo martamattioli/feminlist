@@ -18,10 +18,8 @@ header {
       @include hoverLink;
       text-decoration: none;
     }
-    &.active-li:after {
-      // margin-left: 17px;
-    }
-    &.active-li::before {
+    
+    &.active::before {
       content: '\2022';
       content: '\f111';
       font-family: FontAwesome;
@@ -34,18 +32,15 @@ header {
       opacity: 0;
       transition: opacity 0.2s ease-out;
     }
+
     &.show:before {
       opacity: 1;
     }
-    &.move-up {
-      top: -100%;
-    }
-    &.move-down {
-      top: 150%;
-    }
+
     &.active-li:hover::after {
       width: 0;
     }
+
     i {
       margin-right: 5px;
     }

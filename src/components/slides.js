@@ -13,20 +13,24 @@ const slides = {
     $('#fullpage').fullpage({
       menu: '#menu',
       anchors: this.sections(),
-
-      afterSlideLoad: () => this.displayContent(),
+      touchSensitivity: 30,
+      afterRender: () => this.displayContent('afterRender'),
+      afterSlideLoad: () => this.displayContent('afterSlideLoad'),
       onLeave: () =>
         setTimeout(() => {
-          this.displayContent();
+          this.displayContent('onLeave');
         }, 500),
     });
+
+    $.fn.fullpage.setScrollingSpeed(700);
   },
 
   destroySlider() {
     $.fn.fullpage.destroy('all');
   },
 
-  displayContent() {
+  displayContent(event) {
+    console.log(event);
     const allSlides = '.fp-tableCell';
     const activeSlide = '.fp-section.active .fp-table.active .fp-tableCell';
 
@@ -35,19 +39,13 @@ const slides = {
       $(`${activeSlide} .${side}-side .flex-container`).addClass('animated fadeInUp');
       return;
     });
+
+    this.addActiveLink();
   },
 
-  addActiveLink(anchorLink) { // highlight nav link on slide load
-    console.log(anchorLink, 'in add active link func');
-    this.sectionDivs = $('.section').toArray();
-    $('.nav-link').removeClass('active-section');
-    $('#menu li').removeClass('active-li show');
-
-    setTimeout(() => {
-      $(`a[href*="#${anchorLink}"]`).addClass('active-section');
-      $('.active-section').parent().addClass('active-li');
-      $('.active-li').addClass('show');
-    }, 200);
+  addActiveLink() { // highlight nav link on slide load
+    $('header li').removeClass('show');
+    $('header li.active').addClass('show');
   }
 };
 
