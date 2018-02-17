@@ -1,12 +1,11 @@
 import $ from 'jquery';
 import data from './data';
 import slides from './slides';
+import detectDevice from './deviceDetection';
 
 const app = {
   countProgress: 0,
   dataLoaded: false,
-  lastActiveSlide: false,
-  lastActiveIndex: false,
 
   init() {
     this.main = $('.main-container');
@@ -14,21 +13,17 @@ const app = {
     this.aboutLink = $('#about');
     this.loading = $('#loading');
     this.enterSlides = $('#show-slides');
+    this.turnDeviceContent = $('#turn-device');
+
+    if (detectDevice.isMobile()) detectDevice.checkRotation();
 
     data.fetchData();
-    this.toggleShow();
 
     this.startLoad();
 
-    this.enterSlides.on('click', this.showSlides.bind(this));
+    this.enterSlides.on('click', slides.showSlides.bind(slides));
     this.aboutLink.on('click', this.showAboutPage.bind(this));
-  },
-
-  // check what page is being requested
-  toggleShow() {
-    if (location.href.includes('#')) {
-      this.about.addClass('hide');
-    }
+    $(window).on('resize', detectDevice.checkWindowSize.bind(detectDevice));
   },
 
   startLoad() {
@@ -44,15 +39,19 @@ const app = {
 
         clearInterval(interval);
 
-        if (location.href.includes('#')) {
+        if (location.href.includes('#') && detectDevice.isLandscape()) {
+          this.about.addClass('hide');
           slides.initializeSlider();
+        } else if (!detectDevice.isMobile() && !detectDevice.isLandscape()) {
+          this.about.addClass('hide');
+          this.turnDeviceContent.fadeIn();
         }
       }
     }, 10);
   },
 
   showAboutPage() {
-    this.getLastActiveSlides();
+    slides.getLastActiveSlides();
 
     window.history.pushState(null, null, '/about');
     this.about.fadeIn();
@@ -61,28 +60,6 @@ const app = {
       slides.destroySlider();
       this.main.fadeOut();
     }, 500);
-  },
-
-  getLastActiveSlides() {
-    this.lastActiveSlide = `${location.href.split('#')[1]}`;
-
-    if (this.lastActiveSlide.includes('/')) {
-      const [slide, index] = this.lastActiveSlide.split('/');
-      this.lastActiveSlide = slide;
-      this.lastActiveIndex = parseFloat(index);
-    } else {
-      this.lastActiveIndex = 0;
-    }
-  },
-
-  showSlides() {
-    window.history.pushState(null, null, '/');
-    slides.initializeSlider();
-    this.about.fadeOut();
-    setTimeout(() => {
-      this.main.fadeIn();
-      if (this.lastActiveSlide) $.fn.fullpage.silentMoveTo(this.lastActiveSlide, this.lastActiveIndex);
-    }, 100);
   }
 
 };
