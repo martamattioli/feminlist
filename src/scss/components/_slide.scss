@@ -1,14 +1,14 @@
 body {
-  background-color: #cf9d31;
+  background-color: $black;
 }
 
 main {
-  background: #cf9d31;
+  background: $black;
 }
 
 .fp-tableCell {
   display: flex;
-  background: #cf9d31;
+  background: $black;
   position: relative;
 
   .half-side {
@@ -25,8 +25,28 @@ main {
       width: 100%;
     }
 
-    .category {
-      margin-bottom: 10px;
+    .author {
+      margin-top: 20px;
+    }
+
+    .category, .extra-details {
+      display: flex;
+      height: 70px;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .learn-more {
+      position: relative;
+      display: inline-block;
+      &:before {
+        content: '\f08b';
+        font-family: FontAwesome;
+        font-size: $small;
+        position:absolute;
+        right: -20px;
+        top: -1px;
+      }
     }
   }
 
@@ -73,7 +93,6 @@ main {
 
 .fp-controlArrow {
   margin: 0;
-
 }
 
 .fp-controlArrow.fp-next {
@@ -82,7 +101,8 @@ main {
   &::before {
     content: "\f105";
     font-family: FontAwesome;
-    font-size: 25px;
+    font-size: 30px;
+    font-weight: bold;
     &:hover {
       cursor: pointer;
     }
@@ -91,11 +111,11 @@ main {
 
 .fp-controlArrow.fp-prev {
   border-width: 0;
-  // margin-left: 20px;
   &::before {
     content: "\f104";
     font-family: FontAwesome;
-    font-size: 25px;
+    font-size: 30px;
+    font-weight: bold;
     &:hover {
       cursor: pointer;
     }

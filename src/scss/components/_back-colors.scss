@@ -1,124 +1,124 @@
 .podcasts .fp-slide:nth-child(odd) {
   .left-side {
-    background: #cf9d31;
+    background: $ochre;
   }
   .right-side {
-    background: #f976b1;
+    background: $bright-pink;
   }
 
   // .pagination {
-  //   background: #f976b1;
+  //   background: $bright-pink;
   // }
 }
 .podcasts .fp-slide:nth-child(even) {
   .left-side {
-    background: #f976b1;
+    background: $bright-pink;
   }
   .right-side {
-    background: #cf9d31;
+    background: $ochre;
   }
 
   // .pagination {
-  //   background: #f976b1;
+  //   background: $bright-pink;
   // }
 }
 
 .books .fp-slide:nth-child(odd) {
   .left-side {
-    background: #68e2bd;
+    background: #$water-green;
   }
   .right-side {
-    background: #0078ff;
+    background: $blue;
   }
 
   // .pagination {
-  //   background: #0078ff;
+  //   background: $blue;
   // }
 }
 .books .fp-slide:nth-child(even) {
   .left-side {
-    background: #0078ff;
+    background: $blue;
   }
   .right-side {
-    background: #68e2bd;
+    background: #$water-green;
   }
 
   // .pagination {
-  //   background: #0078ff;
+  //   background: $blue;
   // }
 }
 
 .events .fp-slide:nth-child(odd) {
   .left-side {
-    background: #ff4000;
+    background: $orange-red;
   }
   .right-side {
-    background: #ffa8aa;
+    background: $pink;
   }
 
   // .pagination {
-  //   background: #ffa8aa;
+  //   background: $pink;
   // }
 }
 .events .fp-slide:nth-child(even) {
   .left-side {
-    background: #ffa8aa;
+    background: $pink;
   }
   .right-side {
-    background: #ff4000;
+    background: $orange-red;
   }
 
   // .pagination {
-  //   background: #ffa8aa;
+  //   background: $pink;
   // }
 }
 
 .tvnfilms .fp-slide:nth-child(odd) {
   .left-side {
-    background: #ffa07d;
+    background: $salmon;
   }
   .right-side {
-    background: #00bd7c;
+    background: $green;
   }
 
   // .pagination {
-  //   background: #00bd7c;
+  //   background: $green;
   // }
 }
 .tvnfilms .fp-slide:nth-child(even) {
   .left-side {
-    background: #00bd7c;
+    background: $green;
   }
   .right-side {
-    background: #ffa07d;
+    background: $salmon;
   }
 
   // .pagination {
-  //   background: #00bd7c;
+  //   background: $green;
   // }
 }
 
 .website .fp-slide:nth-child(odd) {
   .left-side {
-    background: #ffa601;
+    background: $orange;
   }
   .right-side {
-    background: #cc5675;
+    background: $dark-pink;
   }
 
   // .pagination {
-  //   background: #cc5675;
+  //   background: $dark-pink;
   // }
 }
 .website .fp-slide:nth-child(even) {
   .left-side {
-    background: #cc5675;
+    background: $dark-pink;
   }
   .right-side {
-    background: #ffa601;
+    background: $orange;
   }
 
   // .pagination {
-  //   background: #cc5675;
+  //   background: $dark-pink;
   // }
 }

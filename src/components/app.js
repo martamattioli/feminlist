@@ -9,7 +9,7 @@ const app = {
 
   init() {
     this.main = $('.main-container');
-    this.about = $('.about');
+    this.about = $('.about-section');
     this.aboutLink = $('#about');
     this.loading = $('#loading');
     this.enterSlides = $('#show-slides');

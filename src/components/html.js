@@ -46,7 +46,7 @@ const html = {
               <div class="link-container">
                 <a
                   href="${entry.linktwo}"
-                  class="outside-link"
+                  class="outside-link learn-more"
                   target="_blank"
                 >${entry.linktwotext}</a>
               </div>

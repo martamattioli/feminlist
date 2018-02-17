@@ -1,55 +1,46 @@
 body {
   font-family: $bodyFont;
+  color: $black;
+  font-weight: 500;
+  font-size: $regular;
   text-transform: uppercase;
-  color: black;
-  font-weight: 600;
-}
-
-a {
-  color: black;
-}
-
-.right-side p {
-  text-transform: none;
-  font-size: 23px;
-  line-height: 40px;
-  letter-spacing: 0.1vw;
 }
 
 h1 {
-  font-size: 82px;
   font-weight: 900;
-  line-height: 90%;
-}
+  letter-spacing: 0px;
+  font-size: $extra-large;
 
-h2 {
-  font-size: 25px;
-  letter-spacing: 2px;
-  line-height: 30px;
-  margin: 20px 0 20px 0;
-}
-
-h3 {
-  font-size: 10px;
-  letter-spacing: 0.2vw;
-  padding: 0;
+  .loading &, .about & {
+    font-size: 10vw;
+  }
 }
 
 .outside-link {
-  font-size: 15px;
-  letter-spacing: 0.2vw;
+  color: $black;
+  font-size: $small;
 }
 
-nav {
-  a {
-    // font-size: 0.8vw;
-    font-size: 12px;
-    letter-spacing: 0.1vw;
-  }
-  p {
-    a {
-      font-size: 1.1vw;
-      letter-spacing: 0.2vw;
-    }
-  }
+.nav-link {
+  color: $black;
+  font-size: $extra-small;
+}
+
+.category,.extra-details {
+  font-size: $small;
+}
+
+.category, .author {
+  letter-spacing: 2px;
+}
+
+.author {
+  font-size: $medium;
+  line-height: $medium + 15;
+}
+
+.description {
+  text-transform: none;
+  font-size: $medium;
+  line-height: $medium + 15;
 }

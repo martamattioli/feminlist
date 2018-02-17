@@ -2,7 +2,7 @@
   position: fixed;
   width: 100vw;
   height: 100vh;
-  background: $black;
+  background: $dark-grey;
   z-index: 2;
 
   display: flex;
@@ -12,6 +12,5 @@
   h1 {
     display: none;
     color: $bright-pink;
-    font-size: 10vw;
   }
 }

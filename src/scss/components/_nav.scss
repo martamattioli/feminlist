@@ -18,16 +18,15 @@ header {
       @include hoverLink;
       text-decoration: none;
     }
-    
+
     &.active::before {
       content: '\2022';
       content: '\f111';
       font-family: FontAwesome;
-      // margin-right: 20px;
       position:absolute;
-      font-size: 10px;
-      top: 50%;
-      left:30px;
+      font-size: 8px;
+      top: 50px;
+      left: 30px;
       transform: translate(-50%, -50%);
       opacity: 0;
       transition: opacity 0.2s ease-out;
