@@ -13,7 +13,7 @@ const data = {
       .get(`${loc}/api/docs`)
       .done((res) => {
         this.data = res;
-
+        console.log(res);
         for (const item in this.data) {
           app.countProgress++;
           content.addWrapper(item);
