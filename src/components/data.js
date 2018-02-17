@@ -8,7 +8,7 @@ const data = {
   fetchData() {
     const loc = (location.hostname === 'localhost') ?
       'http://localhost:8000' :
-      `${location.protocol}${location.hostname}`;
+      `${location.protocol}//${location.hostname}`;
 
     console.log(`${loc}/api/docs`);
 
