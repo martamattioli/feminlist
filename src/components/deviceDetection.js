@@ -24,11 +24,11 @@ const detectDevice = {
 
   checkRotation() {
     this.chooseDisplay();
-    $(window).on('orientationchange', this.chooseDisplay);
+    $(window).on('orientationchange', this.chooseDisplay.bind(this));
   },
 
   chooseDisplay() {
-    (screen.orientation.angle === 0) ?
+    (!this.isLandscape()) ?
       app.turnDeviceContent.fadeIn() :
       app.turnDeviceContent.fadeOut();
   },
