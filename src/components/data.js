@@ -6,11 +6,11 @@ import html from './html';
 const data = {
   data: {},
   fetchData() {
-    const location = (location.hostname === 'localhost') ?
+    const loc = (location.hostname === 'localhost') ?
       'http://localhost:8000' :
       `${location.protocol}${location.hostname}`;
     $
-      .get(`${location}/api/docs`)
+      .get(`${loc}/api/docs`)
       .done((res) => {
         this.data = res;
 
