@@ -1,7 +1,7 @@
 import $ from 'jquery';
 
 import app from './app';
-import html from './html';
+import content from './content';
 
 const data = {
   data: {},
@@ -16,7 +16,7 @@ const data = {
 
         for (const item in this.data) {
           app.countProgress++;
-          html.addWrapper(item);
+          content.addWrapper(item);
         }
       });
   }

@@ -4,7 +4,7 @@ import app from './app';
 import data from './data';
 import slides from './slides';
 
-const html = {
+const content = {
   addWrapper(name) {
     data.data[name].wrapper = `<div class="${(name).toLowerCase()} section" id="${(name).toLowerCase()}"></div>`;
     data.data[name].slides = [];
@@ -73,4 +73,4 @@ const html = {
   },
 };
 
-export default html;
+export default content;
