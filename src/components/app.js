@@ -6,6 +6,7 @@ import detectDevice from './deviceDetection';
 const app = {
   countProgress: 0,
   dataLoaded: false,
+  hoverElements: ['.outside-link', '.nav-link', '.download-link', '.fp-controlArrow'],
 
   init() {
     this.main = $('.main-container');
@@ -24,6 +25,8 @@ const app = {
     this.enterSlides.on('click', slides.showSlides.bind(slides));
     this.aboutLink.on('click', this.showAboutPage.bind(this));
     $(window).on('resize', detectDevice.checkWindowSize.bind(detectDevice));
+
+    this.addHovers();
   },
 
   startLoad() {
@@ -50,8 +53,23 @@ const app = {
     }, 10);
   },
 
+  addHovers() {
+    this.hoverElements.map(element => {
+      return (
+        $('body').on('mouseenter', element, function() {
+          $(this).addClass('is-hover');
+        }),
+        $('body').on('mouseleave', element, function() {
+          $(this).removeClass('is-hover');
+        })
+      );
+    });
+  },
+
   showAboutPage() {
     slides.getLastActiveSlides();
+
+    this.enterSlides.addClass('about-link');
 
     window.history.pushState(null, null, '/about');
     this.about.fadeIn();

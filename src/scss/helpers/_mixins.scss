@@ -1,5 +1,5 @@
 @mixin hoverLink {
-  &:hover {
+  &.is-hover {
     cursor: pointer;
   }
   &::after {
@@ -10,7 +10,24 @@
     background: $black;
     transition: width .3s ease-out;
   }
-  &:hover::after {
+  &.is-hover::after {
     width: 100%;
+  }
+}
+
+@mixin reverseHoverLink {
+  &.is-hover {
+    cursor: pointer;
+  }
+  &::after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 2px;
+    background: $black;
+    transition: width .3s ease-out;
+  }
+  &.is-hover::after {
+    width: 0;
   }
 }

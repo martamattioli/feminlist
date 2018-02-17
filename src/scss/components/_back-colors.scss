@@ -25,7 +25,7 @@
 
 .books .fp-slide:nth-child(odd) {
   .left-side {
-    background: #$water-green;
+    background: $water-green;
   }
   .right-side {
     background: $blue;
@@ -40,7 +40,7 @@
     background: $blue;
   }
   .right-side {
-    background: #$water-green;
+    background: $water-green;
   }
 
   // .pagination {

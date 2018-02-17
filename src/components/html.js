@@ -33,7 +33,7 @@ const html = {
               <div class="link-container">
                 <a
                   href="${entry.linkone}"
-                  class="outside-link"
+                  class="download-link"
                   target="_blank"
                 >${entry.linkonetext}</a>
               </div>

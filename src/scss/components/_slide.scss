@@ -73,6 +73,12 @@ main {
     display: inline-block;
   }
 
+  .download-link {
+    @include reverseHoverLink;
+    display: inline-block;
+    text-decoration: none;
+  }
+
   .pagination {
     position: absolute;
     bottom: 20px;
@@ -93,6 +99,11 @@ main {
 
 .fp-controlArrow {
   margin: 0;
+  transform: scale3d(1, 1, 1);
+  transition: all 0.3s ease-out;
+  &.is-hover {
+    transform: scale3d(1.1, 1.1, 1.1);
+  }
 }
 
 .fp-controlArrow.fp-next {
@@ -103,7 +114,7 @@ main {
     font-family: FontAwesome;
     font-size: 30px;
     font-weight: bold;
-    &:hover {
+    &.is-hover {
       cursor: pointer;
     }
   }
@@ -116,7 +127,7 @@ main {
     font-family: FontAwesome;
     font-size: 30px;
     font-weight: bold;
-    &:hover {
+    &.is-hover {
       cursor: pointer;
     }
   }

@@ -71,8 +71,8 @@ const slides = {
   showSlides() {
     window.history.pushState(null, null, '/');
     this.initializeSlider();
-    app.about.fadeOut();
     setTimeout(() => {
+      app.about.fadeOut('slow');
       app.main.fadeIn();
       if (this.lastActiveSlide) $.fn.fullpage.silentMoveTo(this.lastActiveSlide, this.lastActiveIndex);
     }, 100);

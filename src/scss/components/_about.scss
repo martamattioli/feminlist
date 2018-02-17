@@ -20,6 +20,18 @@
 
     .outside-link {
       @include hoverLink;
+      &:before {
+        content: 'ENTER';
+      }
+
+      &.about-link {
+        position: fixed;
+        right: 30px;
+        top: 30px;
+        &:before {
+          content: 'CLOSE';
+        }
+      }
     }
   }
 }
