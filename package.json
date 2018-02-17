@@ -17,7 +17,10 @@
     "bootstrap-css-only": "^3.3.7",
     "cors": "^2.8.4",
     "express": "^4.16.2",
+    "font-awesome": "^4.7.0",
+    "fullpage.js": "^2.9.6",
     "google-spreadsheet-to-json": "^1.0.0",
+    "jquery": "^3.3.1",
     "mongoose": "^5.0.4",
     "morgan": "^1.9.0",
     "request-promise": "^4.2.2"

@@ -9,4 +9,20 @@
   &.hide {
     display: none;
   }
+
+  section {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    justify-content: center;
+    align-items: center;
+
+    h1 {
+      margin-bottom: 30px;
+    }
+
+    .outside-link {
+      @include hoverLink;
+    }
+  }
 }

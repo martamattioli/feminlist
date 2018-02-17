@@ -1,23 +1,22 @@
-import data from './components/data.js';
-import detectDevice from './components/deviceDetection.js';
+import $ from 'jquery';
+import 'fullpage.js/dist/jquery.fullpage';
+import 'fullpage.js/dist/jquery.fullpage.css';
+
+import slides from './components/slides';
+import detectDevice from './components/deviceDetection';
 
 import './scss/style.scss';
 
-(function($) {
-  $(document).ready(function() {
-    window.app.init();
-
-    $(window).on('resize', window.app.checkDevice.bind(window.app));
-  });
-
-})(jQuery);
+$(document).ready(function() {
+  window.app.init();
+  $(window).on('resize', window.app.checkDevice.bind(window.app));
+});
 
 window.app = {
   data: {},
   countMs: 0,
   countMsInterval: null,
   countProgress: 0,
-  fetchOver: false,
   sections: null,
   shortSections: null,
   isMobile: detectDevice.detect(),
@@ -34,8 +33,12 @@ window.app = {
     this.shortSections = this.sections.map(section => section.substring(6));
     this.fetchData();
 
+
+    window.history.pushState(null, null, '/about');
+
     this.aboutLink.on('click', (e) => {
       e.preventDefault();
+      this.lastActiveLink = $('.nav-link.active-section').attr('href').split('#')[1];
       window.history.pushState(null, null, '/about');
       this.toggleAbout();
     });
@@ -45,12 +48,16 @@ window.app = {
     this.checkDevice();
   },
 
-  enterSite() {
+  enterSite(e) {
+    e.preventDefault();
+
+    const lastActiveLink = this.lastActiveLink ? this.lastActiveLink : 'topic-podcasts';
+    console.log(lastActiveLink);
     this.toggleAbout();
     window.history.pushState(null, null, '/');
-    this.addActiveLink('topic-podcasts');
+    this.addActiveLink(lastActiveLink);
     this.showContent();
-    this.jumpHome();
+    if (!this.lastActiveLink) this.jumpHome();
     $.fn.fullpage.setScrollingSpeed(700);
   },
 
@@ -148,10 +155,11 @@ window.app = {
         } else {
           $(leavingSection.addClass('move-down'));
         }
-        that.showContent(index, nextIndex, direction, leavingSection, that);
+        that.showContent();
       },
-      onSlideLeave: (anchorLink, index, slideIndex, direction, nextSlideIndex) => this.checkContent(anchorLink, index, slideIndex, direction, nextSlideIndex),
-      afterLoad: (anchorLink) => this.addActiveLink(anchorLink)
+      onSlideLeave: () => this.checkContent(),
+      afterLoad: (anchorLink) => this.addActiveLink(anchorLink),
+      afterSlideLoad: ( anchorLink, index, slideAnchor, slideIndex) => this.addActiveLink(anchorLink)
     });
 
     window.history.pushState(null, null, '/');
@@ -159,7 +167,7 @@ window.app = {
     this.checkContent();
   },
 
-  showContent(index, nextIndex, direction, leavingSection, app) { // show content on slide change
+  showContent() { // show content on slide change
     $('.active-li').removeClass('show');
     $('.fp-table .fp-tableCell .left-side div').css({'opacity': '0'}).removeClass('animated fadeInUp');
     $('.fp-table .fp-tableCell .right-side div').css({'opacity': '0'}).removeClass('animated fadeInUp');
@@ -172,20 +180,20 @@ window.app = {
   },
 
   addActiveLink(anchorLink) { // highlight nav link on slide load
+    console.log(anchorLink, 'in add active link func');
     this.sectionDivs = $('.section').toArray();
     $('.nav-link').removeClass('active-section');
-    $('#menu li').removeClass('active-li');
+    $('#menu li').removeClass('active-li show');
 
     setTimeout(() => {
       $(`a[href*="#${anchorLink}"]`).addClass('active-section');
       $('.active-section').parent().addClass('active-li');
       $('.active-li').addClass('show');
-    }, 400);
-
-    console.log($(`a[href*="#${anchorLink}"]`));
+    }, 200);
   },
 
-  checkContent(anchorLink, index, slideIndex, direction, nextSlideIndex) {
+  checkContent() {
+    $('.active-li').removeClass('show');
     $('.fp-table .fp-tableCell .left-side div').css({'opacity': '0'}).removeClass('animated fadeInUp');
     $('.fp-table .fp-tableCell .right-side div').css({'opacity': '0'}).removeClass('animated fadeInUp');
 
@@ -241,6 +249,7 @@ window.app = {
     $('header').css({'opacity': '1'});
     this.main.css({'opacity': '1'});
     this.showContent();
+    this.addActiveLink(window.location.href.split('#')[1]);
   },
 
   jumpHome() {

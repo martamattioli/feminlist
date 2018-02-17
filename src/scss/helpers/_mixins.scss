@@ -1,4 +1,7 @@
 @mixin hoverLink {
+  &:hover {
+    cursor: pointer;
+  }
   &::after {
     content: '';
     display: block;
