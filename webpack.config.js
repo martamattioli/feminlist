@@ -1,6 +1,13 @@
 const path = require('path');
 const webpack = require('webpack');
 
+const GoogleFontsPlugin = require('google-fonts-webpack-plugin');
+const GoogleFonts = new GoogleFontsPlugin({
+  fonts: [
+    { family: 'Rubik', variants: [ '300', '500', '500i', '700', '900', '900i' ]}
+  ]
+});
+
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const HtmlWebpack = new HtmlWebpackPlugin({
   template: 'src/index.html',
@@ -10,7 +17,7 @@ const HtmlWebpack = new HtmlWebpackPlugin({
 
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const CopyWebpack = new CopyWebpackPlugin([
-  { from: './src/assets', to: 'assets' }
+  { from: './src/assets/', to: 'assets' }
 ]);
 
 const HotModuleReplcement = new webpack.HotModuleReplacementPlugin();
@@ -46,5 +53,5 @@ module.exports = {
       }
     }
   },
-  plugins: [HotModuleReplcement, HtmlWebpack, CopyWebpack]
+  plugins: [GoogleFonts, HotModuleReplcement, HtmlWebpack, CopyWebpack]
 };
