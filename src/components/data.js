@@ -9,6 +9,9 @@ const data = {
     const loc = (location.hostname === 'localhost') ?
       'http://localhost:8000' :
       `${location.protocol}${location.hostname}`;
+
+    console.log(`${loc}/api/docs`);
+
     $
       .get(`${loc}/api/docs`)
       .done((res) => {
