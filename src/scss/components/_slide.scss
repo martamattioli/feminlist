@@ -99,6 +99,7 @@ main {
 
 .fp-controlArrow {
   margin: 0;
+  //
   transform: scale3d(1, 1, 1);
   transition: all 0.3s ease-out;
   &.is-hover {
