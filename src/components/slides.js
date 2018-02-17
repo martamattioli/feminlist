@@ -7,12 +7,18 @@ const slides = {
   sections: function() {
     return this.navLinks.map(section => $(section).attr('href').substring(1));
   },
+  leftRight: ['left', 'right'],
 
   initializeSlider() {
     $('#fullpage').fullpage({
+      menu: '#menu',
       anchors: this.sections(),
-      afterSlideLoad: (anchorLink, index, slideAnchor, slideIndex) => this.checkContent(slideIndex),
-      afterLoad: (anchorLink, index) => console.log(anchorLink, index)
+
+      afterSlideLoad: () => this.displayContent(),
+      onLeave: () =>
+        setTimeout(() => {
+          this.displayContent();
+        }, 500),
     });
   },
 
@@ -20,16 +26,12 @@ const slides = {
     $.fn.fullpage.destroy('all');
   },
 
-  checkContent(slideIndex) {
-    console.log('checking content', slideIndex);
+  displayContent() {
     const allSlides = '.fp-tableCell';
-    const activeSlide = `#${slideIndex} .fp-tableCell`;
-    const leftRight = ['left', 'right'];
+    const activeSlide = '.fp-section.active .fp-table.active .fp-tableCell';
 
-    leftRight.map(side => {
-      console.log(`${activeSlide} .${side}-side .flex-container`);
+    this.leftRight.map(side => {
       $(`${allSlides} .${side}-side .flex-container`).removeClass('animated fadeInUp');
-
       $(`${activeSlide} .${side}-side .flex-container`).addClass('animated fadeInUp');
       return;
     });
