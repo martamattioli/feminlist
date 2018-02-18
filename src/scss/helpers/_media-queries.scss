@@ -40,13 +40,13 @@
 @media only screen
   and (max-device-height: 500px) {
     nav p:first-child {
-      right: 80px;
-      top: 80px;
+      right: 40px;
+      top: 40px;
     }
 
     .fp-tableCell {
       .half-side {
-        padding: 60px;
+        padding: 40px 60px;
 
         .category,  .extra-details {
           height: 40px;
