@@ -19,19 +19,19 @@ header {
       text-decoration: none;
     }
 
-    &.active::before {
-      content: '\2022';
-      content: '\f111';
-      font-family: FontAwesome;
-      position:absolute;
-      font-size: 8px;
-      padding-bottom: 2px;
-      top: 50%;
-      left: 0;
-      transform: translate(-50%, -50%);
-      opacity: 0;
-      transition: opacity 0.2s ease-out;
-    }
+    // &.active::before {
+    //   content: '\2022';
+    //   content: '\f111';
+    //   font-family: FontAwesome;
+    //   position:absolute;
+    //   font-size: 8px;
+    //   padding-bottom: 2px;
+    //   top: 50%;
+    //   left: 0;
+    //   transform: translate(-50%, -50%);
+    //   opacity: 0;
+    //   transition: opacity 0.2s ease-out;
+    // }
 
     &.active a:after {
       width: 100%;
