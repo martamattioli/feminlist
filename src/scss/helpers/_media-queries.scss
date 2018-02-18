@@ -103,6 +103,13 @@
 }
 
 @media only screen
+  and (max-device-width: 320px) {
+    h1 {
+      font-size: 30px;
+    }
+}
+
+@media only screen
   and (min-width: 1200px) {
     .fp-tableCell {
       .half-side {
