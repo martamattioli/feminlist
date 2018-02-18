@@ -42,12 +42,12 @@ const app = {
     const interval = setInterval(() => {
       this.percentageLoader();
 
-      if (this.dataLoaded) {
+      if (this.dataLoaded && this.loader >= 101) {
         setTimeout(() => {
           this.loading.fadeOut();
-          clearInterval(interval);
         }, 1000);
 
+        clearInterval(interval);
         if (location.href.includes('#') && detectDevice.isLandscape()) {
           this.about.addClass('hide');
           slides.initializeSlider();
@@ -55,12 +55,13 @@ const app = {
           this.about.addClass('hide');
           this.turnDeviceContent.fadeIn();
         }
+
       }
     }, 10);
   },
 
   percentageLoader() {
-    this.loaderDiv.html(`${this.loader >= 100 ? this.loader : this.loader++}%`);
+    this.loaderDiv.html(`${this.loader >= 101 ? this.loader : this.loader++}%`);
   },
 
   addHovers() {

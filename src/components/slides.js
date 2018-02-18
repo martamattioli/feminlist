@@ -9,6 +9,7 @@ const slides = {
   navLinks: $('.nav-link').toArray(),
   lastActiveSlide: false,
   lastActiveIndex: false,
+  loaded: false,
   sections: function() {
     return this.navLinks.map(section => $(section).attr('href').substring(1));
   },
@@ -21,12 +22,14 @@ const slides = {
       menu: '#menu',
       anchors: this.sections(),
       touchSensitivity: 10,
-      afterRender: () => this.displayContent(),
-      afterSlideLoad: () => this.displayContent(),
-      onLeave: () =>
+      afterRender: () => this.displayContent({loading: true}),
+      afterSlideLoad: () => this.displayContent(this.loaded),
+      onLeave: (i, nI, direction) =>
         setTimeout(() => {
-          this.displayContent();
+          this.displayContent({direction});
         }, 500),
+      onSlideLeave: (anchorLink, index, slideIndex, directionSide, nextSlideIndex) =>
+        this.displayContent({directionSide}),
       afterResize: () => detectDevice.checkIsLandscape('slider')
     });
 
@@ -38,15 +41,38 @@ const slides = {
     $(window).on('resize', detectDevice.checkWindowSize.bind(detectDevice));
   },
 
-  displayContent() {
-    const allSlides = '.fp-tableCell';
-    const activeSlide = '.fp-section.active .fp-table.active .fp-tableCell';
+  displayContent({ ...options }) {
+    let animation;
+    let timer;
 
-    this.leftRight.map(side => {
-      $(`${allSlides} .${side}-side .flex-container`).removeClass('animated fadeInUp');
-      $(`${activeSlide} .${side}-side .flex-container`).addClass('animated fadeInUp');
-      return;
-    });
+    if (options.direction) {
+      options.direction === 'up' ? animation = 'fadeInDown' : animation = 'fadeInUp';
+      timer = 0;
+    } else if (options.directionSide) {
+      options.directionSide === 'right' ? animation = 'fadeInRight' : animation = 'fadeInLeft';
+      timer = 500;
+    } else if (options.loading) {
+      animation = 'fadeInUp';
+      timer = 0;
+    } else {
+      if (!this.loaded) {
+        animation = 'fadeInUp';
+        timer = 0;
+      }
+      this.loaded = true;
+    }
+
+    setTimeout(() => {
+      const allSlides = '.fp-tableCell';
+      const activeSlide = '.fp-section.active .fp-table.active .fp-tableCell';
+
+      this.leftRight.map(side => {
+        $(`${allSlides} .${side}-side .flex-container`).removeClass(`animated ${animation}`);
+        $(`${activeSlide} .${side}-side .flex-container`).addClass(`animated ${animation}`);
+        return;
+      });
+
+    }, timer);
 
     this.addActiveLink();
   },
