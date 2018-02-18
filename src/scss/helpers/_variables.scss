@@ -2,11 +2,21 @@ $bodyFont: 'Rubik', sans-serif;
 
 // font sizes
 $extra-small: 12px;
-$small: 15px;
-$regular: 20px;
-$medium: 25px;
-$large: 30px;
-$extra-large: 70px;
+$small: 1.7vw;
+$regular: 2vw;
+$medium: 2.5vw;
+$large: 4vw;
+$extra-large: 6vw;
+
+// @media only screen
+//   and (max-device-height: 320px) {
+//     $extra-small: 12px;
+//     $small: 15px;
+//     $regular: 18px;
+//     $medium: 20px;
+//     $large: 25px;
+//     $extra-large: 50px;
+// }
 
 // colors
 $dark-grey: #333;

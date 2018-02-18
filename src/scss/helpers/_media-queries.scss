@@ -1,0 +1,143 @@
+.thin-screen {
+  .fp-tableCell {
+    .half-side {
+      .learn-more {
+        &:before {
+          font-size: 12px;
+          right: -17px;
+        }
+      }
+    }
+  }
+
+  body {
+    //regular
+    font-size: 20px;
+  }
+
+  h1 {
+    //extra-large
+    font-size: 40px;
+  }
+
+  .outside-link, .download-link, .nav-link {
+    //extra-small
+    font-size: 12px;
+  }
+
+  .category,.extra-details {
+    // $small: 15px;
+    font-size: 15px;
+  }
+
+  .author, .description {
+    // $medium: 25px;
+    font-size: 20px;
+    line-height: 20px + 15;
+  }
+}
+
+@media only screen
+  and (max-device-height: 500px) {
+    nav p:first-child {
+      right: 80px;
+      top: 80px;
+    }
+
+    .fp-tableCell {
+      .half-side {
+        padding: 90px;
+
+        .category,  .extra-details {
+          height: 40px;
+          line-height: 12px + 2;
+        }
+
+        .author {
+          margin-top: 10px;
+        }
+
+        .learn-more {
+          &:before {
+            font-size: 12px;
+            right: -17px;
+          }
+        }
+      }
+    }
+
+
+    body {
+      // $regular: 16px;
+      font-size: 16px;
+    }
+
+    h1 {
+      // $extra-large: 40px;
+      font-size: 38px;
+    }
+
+    .outside-link, .download-link, .nav-link {
+      // $small: 12px;
+      font-size: 12px;
+    }
+
+    .category,.extra-details {
+      // $small: 12px;
+      font-size: 12px;
+    }
+
+    .category, .author {
+      letter-spacing: 2px;
+    }
+
+    .category {
+      line-height: 12px + 8;
+    }
+
+    .author, .description {
+      // $medium: 18px;
+      font-size: 16px;
+      line-height: 16px + 9;
+    }
+}
+
+@media only screen
+  and (min-width: 1200px) {
+    .fp-tableCell {
+      .half-side {
+        .learn-more {
+          &:before {
+            font-size: 14px;
+            right: -17px;
+          }
+        }
+      }
+    }
+
+    body {
+      //regular
+      font-size: 20px;
+    }
+
+    h1 {
+      //extra-large
+      font-size: 60px;
+    }
+
+    .outside-link, .download-link, .nav-link {
+      //extra-small
+      font-size: 14px;
+    }
+
+    .category,.extra-details {
+      // $small: 15px;
+      font-size: 15px;
+    }
+
+    .author, .description {
+      // $medium: 25px;
+      font-size: 25px;
+      line-height: 25px + 15;
+    }
+}

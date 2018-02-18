@@ -35,11 +35,8 @@ const app = {
     }, 200);
 
     const interval = setInterval(() => {
-      console.log('data not loaded yet');
       if (this.dataLoaded) {
-        console.log('data loaded');
         setTimeout(() => {
-          console.log('fading out now');
           this.loading.fadeOut();
         }, 1000);
 

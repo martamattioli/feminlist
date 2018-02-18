@@ -25,7 +25,7 @@ const content = {
             <div class="flex-container">
               <div></div>
               <div>
-              <h3 class="category">Category: ${entry.category}</h3>
+                <h3 class="category">Category: ${entry.category}</h3>
                 <h1 class="title">${entry.title}</h1>
                 <h2 class="author">${entry.credits}</h2>
                 <h3 class="extra-details">${entry.extrainfotext}: ${entry.extrainfo}</h3>

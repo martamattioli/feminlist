@@ -10,13 +10,11 @@ const data = {
       'http://localhost:8000' :
       `${location.protocol}//${location.hostname}`;
 
-    console.log(`${loc}/api/docs`);
-
     $
       .get(`${loc}/api/docs`)
       .done((res) => {
         this.data = res;
-        console.log(res);
+
         for (const item in this.data) {
           app.countProgress++;
           content.addWrapper(item);

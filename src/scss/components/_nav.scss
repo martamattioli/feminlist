@@ -25,6 +25,7 @@ header {
       font-family: FontAwesome;
       position:absolute;
       font-size: 8px;
+      padding-bottom: 2px;
       top: 50%;
       left: 30px;
       transform: translate(-50%, -50%);
@@ -55,8 +56,8 @@ nav {
     &:first-child {
       position: fixed;
       z-index: 1;
-      right: 20px;
-      top: 20px;
+      right: 60px;
+      top: 60px;
     }
     &:nth-child(2) {
       position: fixed;

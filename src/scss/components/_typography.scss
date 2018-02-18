@@ -16,12 +16,15 @@ h1 {
   }
 }
 
-.outside-link, .download-link {
-  color: $black;
-  font-size: $small;
+.turn-device {
+  h2 {
+    font-size: 7vw;
+    line-height: 7vw;
+    font-weight: 900;
+  }
 }
 
-.nav-link {
+.outside-link, .download-link, .nav-link {
   color: $black;
   font-size: $extra-small;
 }
@@ -34,13 +37,11 @@ h1 {
   letter-spacing: 2px;
 }
 
-.author {
+.author, .description {
   font-size: $medium;
-  line-height: $medium + 15;
+  line-height: 3.6vw;
 }
 
 .description {
   text-transform: none;
-  font-size: $medium;
-  line-height: $medium + 15;
 }

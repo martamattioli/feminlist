@@ -108,10 +108,11 @@ main {
 
 .fp-controlArrow.fp-next {
   border-width: 0;
-  margin-right: 10px;
+  margin-right: 35px;
   &::before {
     content: "\f105";
     font-family: FontAwesome;
+    padding: 10px;
     font-size: 30px;
     font-weight: bold;
     &.is-hover {
@@ -124,6 +125,7 @@ main {
   border-width: 0;
   &::before {
     content: "\f104";
+    padding: 10px;
     font-family: FontAwesome;
     font-size: 30px;
     font-weight: bold;
