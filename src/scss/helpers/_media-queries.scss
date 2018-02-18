@@ -52,6 +52,12 @@
     .fp-tableCell {
       .half-side {
         padding: 90px 60px;
+
+        .category,  .extra-details {
+          height: 40px;
+          font-size: 12px;
+          line-height: 12px + 2;
+        }
       }
     }
 
