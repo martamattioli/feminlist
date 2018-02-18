@@ -38,6 +38,30 @@
 }
 
 @media only screen
+  and (max-device-width: 320px) {
+    h1 {
+      font-size: 30px;
+    }
+
+    .author, .description {
+      // $medium: 18px;
+      font-size: 14px;
+      line-height: 14px + 9;
+    }
+
+    .fp-tableCell {
+      .half-side {
+        padding: 60px;
+      }
+    }
+
+    nav p:first-child {
+      right: 80px;
+      top: 80px;
+    }
+}
+
+@media only screen
   and (max-device-height: 500px) {
     nav p:first-child {
       right: 40px;
@@ -99,13 +123,6 @@
       // $medium: 18px;
       font-size: 16px;
       line-height: 16px + 9;
-    }
-}
-
-@media only screen
-  and (max-device-width: 320px) {
-    h1 {
-      font-size: 30px;
     }
 }
 
