@@ -2,17 +2,22 @@ import $ from 'jquery';
 import data from './data';
 import slides from './slides';
 import detectDevice from './deviceDetection';
+import content from './content';
 
 const app = {
+  loader: 0,
   countProgress: 0,
   dataLoaded: false,
   hoverElements: ['.outside-link', '.nav-link', '.download-link', '.fp-controlArrow'],
 
   init() {
+    content.addInitialContent();
+
     this.main = $('.main-container');
     this.about = $('.about-section');
     this.aboutLink = $('#about');
     this.loading = $('#loading');
+    this.loaderDiv = $('#loader');
     this.enterSlides = $('#show-slides');
     this.turnDeviceContent = $('#turn-device');
 
@@ -31,16 +36,17 @@ const app = {
 
   startLoad() {
     setTimeout(() => {
-      $('#loading h1').fadeIn('slow');
+      $('#loading h1, #loader').fadeIn('slow');
     }, 200);
 
     const interval = setInterval(() => {
+      this.percentageLoader();
+
       if (this.dataLoaded) {
         setTimeout(() => {
           this.loading.fadeOut();
+          clearInterval(interval);
         }, 1000);
-
-        clearInterval(interval);
 
         if (location.href.includes('#') && detectDevice.isLandscape()) {
           this.about.addClass('hide');
@@ -51,6 +57,10 @@ const app = {
         }
       }
     }, 10);
+  },
+
+  percentageLoader() {
+    this.loaderDiv.html(`${this.loader >= 100 ? this.loader : this.loader++}%`);
   },
 
   addHovers() {
@@ -69,7 +79,7 @@ const app = {
   showAboutPage() {
     slides.getLastActiveSlides();
 
-    this.enterSlides.addClass('about-link');
+    this.enterSlides.parent().addClass('about-link');
 
     window.history.pushState(null, null, '/about');
     this.about.fadeIn();

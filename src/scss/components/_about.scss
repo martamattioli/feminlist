@@ -23,14 +23,14 @@
       &:before {
         content: 'ENTER';
       }
+    }
 
-      &.about-link {
-        position: fixed;
-        right: 60px;
-        top: 60px;
-        &:before {
-          content: 'CLOSE';
-        }
+    .about-link {
+      position: fixed;
+      right: 60px;
+      top: 60px;
+      a:before {
+        content: 'CLOSE';
       }
     }
   }

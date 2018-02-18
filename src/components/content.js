@@ -2,9 +2,32 @@ import $ from 'jquery';
 
 import app from './app';
 import data from './data';
-import slides from './slides';
 
 const content = {
+  addInitialContent() {
+    const initialContent = `
+      <div id="loading" class="loading">
+        <h1>Feminlist</h1>
+        <p id="loader">0%</p>
+      </div>
+      <div class="main-container" id="fullpage"></div>
+      <div class="about-section">
+        <section>
+          <h1>About</h1>
+          <p><a id="show-slides" class="outside-link"></a></p>
+        </section>
+      </div>
+      <div id="turn-device" class="turn-device">
+        <section>
+          <div>
+            <img class="animated rotateInDownLeft infinite" src="assets/turn-device.svg">
+            <h2>Please Turn You Device To Landscape</h2>
+          </div>
+        </section>
+      </div>`;
+    $('main').append(initialContent);
+  },
+
   addWrapper(name) {
     data.data[name].wrapper = `<div class="${(name).toLowerCase()} section" id="${(name).toLowerCase()}"></div>`;
     data.data[name].slides = [];

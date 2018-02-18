@@ -40,11 +40,11 @@ main {
       position: relative;
       display: inline-block;
       &:before {
-        content: '\f08b';
+        content: '\F08B';
         font-family: FontAwesome;
-        font-size: $small;
-        position:absolute;
-        right: -20px;
+        font-size: 1.3vw;
+        position: absolute;
+        right: -17px;
         top: -1px;
       }
     }

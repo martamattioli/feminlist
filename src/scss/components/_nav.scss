@@ -1,6 +1,6 @@
 header {
   position: fixed;
-  width: 150px;
+  width: 100px;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
@@ -27,18 +27,18 @@ header {
       font-size: 8px;
       padding-bottom: 2px;
       top: 50%;
-      left: 30px;
+      left: 0;
       transform: translate(-50%, -50%);
       opacity: 0;
       transition: opacity 0.2s ease-out;
     }
 
-    &.show:before {
-      opacity: 1;
+    &.active a:after {
+      width: 100%;
     }
 
-    &.active-li:hover::after {
-      width: 0;
+    &.show:before {
+      opacity: 1;
     }
 
     i {
