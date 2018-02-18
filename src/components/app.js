@@ -1,4 +1,5 @@
 import $ from 'jquery';
+
 import data from './data';
 import slides from './slides';
 import detectDevice from './deviceDetection';
@@ -42,7 +43,7 @@ const app = {
     const interval = setInterval(() => {
       this.percentageLoader();
 
-      if (this.dataLoaded && this.loader >= 101) {
+      if (this.dataLoaded && this.loader > 100) {
         setTimeout(() => {
           this.loading.fadeOut();
         }, 1000);
@@ -61,7 +62,7 @@ const app = {
   },
 
   percentageLoader() {
-    this.loaderDiv.html(`${this.loader >= 101 ? this.loader : this.loader++}%`);
+    this.loaderDiv.html(`${this.loader > 100 ? this.loader : this.loader++}%`);
   },
 
   addHovers() {
