@@ -20,7 +20,7 @@ const slides = {
     $('#fullpage').fullpage({
       menu: '#menu',
       anchors: this.sections(),
-      touchSensitivity: 30,
+      touchSensitivity: 10,
       afterRender: () => this.displayContent(),
       afterSlideLoad: () => this.displayContent(),
       onLeave: () =>
