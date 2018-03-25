@@ -30,7 +30,8 @@ function docsIndex(req, res, next) {
         });
 
         return { entries };
-      });
+      })
+      .catch(err => console.log(err));
   }
 
   Promise.props(data)

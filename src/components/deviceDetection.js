@@ -59,7 +59,7 @@ const detectDevice = {
   checkIsThinScreen() {
     const widthHeightProportion = parseFloat($(window).width() / $(window).height()).toFixed(2);
 
-    (widthHeightProportion > 1.9) ?
+    (widthHeightProportion > 1.9 && $(window).height() < 600) ?
       $('body').addClass('thin-screen') :
       $('body').removeClass('thin-screen');
   }

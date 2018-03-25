@@ -7,7 +7,7 @@ const content = {
   addInitialContent() {
     const initialContent = `
       <div id="loading" class="loading">
-        <h1>Feminlist</h1>
+        <h1 class="loading-h1">Feminlist</h1>
         <p id="loader">0%</p>
       </div>
       <div class="main-container" id="fullpage"></div>

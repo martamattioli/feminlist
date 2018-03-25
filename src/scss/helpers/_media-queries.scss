@@ -133,42 +133,42 @@
     }
 }
 
-@media only screen
-  and (min-width: 1200px) {
-    .fp-tableCell {
-      .half-side {
-        .learn-more {
-          &:before {
-            font-size: 14px;
-            right: -17px;
-          }
-        }
-      }
-    }
-
-    body {
-      //regular
-      font-size: 20px;
-    }
-
-    h1 {
-      //extra-large
-      font-size: 60px;
-    }
-
-    .outside-link, .download-link, .nav-link {
-      //extra-small
-      font-size: 14px;
-    }
-
-    .category,.extra-details {
-      // $small: 15px;
-      font-size: 15px;
-    }
-
-    .author, .description {
-      // $medium: 25px;
-      font-size: 25px;
-      line-height: 25px + 15;
-    }
-}
+// @media only screen
+//   and (min-width: 1200px) {
+//     .fp-tableCell {
+//       .half-side {
+//         .learn-more {
+//           &:before {
+//             font-size: 14px;
+//             right: -17px;
+//           }
+//         }
+//       }
+//     }
+//
+//     body {
+//       //regular
+//       font-size: 20px;
+//     }
+//
+//     h1 {
+//       //extra-large
+//       font-size: 60px;
+//     }
+//
+//     .outside-link, .download-link, .nav-link {
+//       //extra-small
+//       font-size: 14px;
+//     }
+//
+//     .category,.extra-details {
+//       // $small: 15px;
+//       font-size: 15px;
+//     }
+//
+//     .author, .description {
+//       // $medium: 25px;
+//       font-size: 25px;
+//       line-height: 25px + 15;
+//     }
+// }

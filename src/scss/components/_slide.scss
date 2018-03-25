@@ -31,7 +31,7 @@ main {
 
     .category, .extra-details {
       display: flex;
-      height: 70px;
+      height: 90px;
       justify-content: center;
       align-items: center;
     }
@@ -42,7 +42,7 @@ main {
       &:before {
         content: '\F08B';
         font-family: FontAwesome;
-        font-size: 1.3vw;
+        font-size: 13px;
         position: absolute;
         right: -17px;
         top: -1px;
@@ -73,7 +73,7 @@ main {
     display: inline-block;
   }
 
-  .download-link {
+  .download-link, .learn-more {
     @include reverseHoverLink;
     display: inline-block;
     text-decoration: none;
