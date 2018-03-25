@@ -44,7 +44,7 @@ const app = {
     const interval = setInterval(() => {
       this.percentageLoader();
 
-      if (this.dataLoaded && this.loader > 100) {
+      if (this.dataLoaded && this.loader >= 100) {
         setTimeout(() => {
           this.loading.fadeOut();
         }, 1000);
@@ -63,7 +63,7 @@ const app = {
   },
 
   percentageLoader() {
-    this.loaderDiv.html(`${this.loader > 100 ? this.loader : this.loader++}%`);
+    this.loaderDiv.html(`${this.loader >= 100 ? this.loader : this.loader++}%`);
   },
 
   addHovers() {

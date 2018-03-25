@@ -1,5 +1,4 @@
 module.exports = {
-  db: process.env.MONGODB_URI || 'mongodb://localhost/feminlist',
   port: process.env.PORT || 3000,
   sheetsDocs: {
     podcasts: process.env.PODCASTS_ID,

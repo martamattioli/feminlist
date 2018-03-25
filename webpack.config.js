@@ -1,12 +1,12 @@
 const path = require('path');
 const webpack = require('webpack');
 
-const GoogleFontsPlugin = require('google-fonts-webpack-plugin');
-const GoogleFonts = new GoogleFontsPlugin({
-  fonts: [
-    { family: 'Rubik', variants: [ '300', '500', '500i', '700', '900', '900i' ]}
-  ]
-});
+// const GoogleFontsPlugin = require('google-fonts-webpack-plugin');
+// const GoogleFonts = new GoogleFontsPlugin({
+//   fonts: [
+//     { family: 'Rubik', variants: [ '300', '500', '500i', '700', '900', '900i' ]}
+//   ]
+// });
 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const HtmlWebpack = new HtmlWebpackPlugin({
@@ -53,5 +53,5 @@ module.exports = {
       }
     }
   },
-  plugins: [GoogleFonts, HotModuleReplcement, HtmlWebpack, CopyWebpack]
+  plugins: [HotModuleReplcement, HtmlWebpack, CopyWebpack]
 };
