@@ -31,11 +31,30 @@ h1 {
   font-size: $extra-small;
 }
 
-.category, .extra-details {
-  font-size: $small;
+.about-section {
+  a {
+    color: $black;
+    text-decoration: none;
+    display: inline-block;
+    @include reverseHoverLink;
+
+    &:after {
+      height: 3px;
+    }
+  }
+
+  p {
+    line-height: 2.7vw;
+  }
 }
 
-.category, .author {
+.category, .extra-details {
+  font-size: $small;
+  letter-spacing: 0.3vw;
+  line-height: 1.5vw;
+}
+
+.author {
   letter-spacing: 2px;
 }
 

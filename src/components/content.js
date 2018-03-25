@@ -14,6 +14,8 @@ const content = {
       <div class="about-section">
         <section>
           <h1>About</h1>
+          <p>Feminlist is an extensive directory of content created for and by women. The website was developed by Marta and Maria - two friends living in opposite sides of the world - with the intention of increasing visibility of all women in media.</p>
+          <p>Get in touch on <a href="mailto:hello@feminlist.com">hello@feminlist.com</a> if you'd like to submit a piece of content, if you have a suggestion or if you simply want to say hi. We'd love to hear from you.</p>
           <p><a id="show-slides" class="outside-link"></a></p>
         </section>
       </div>

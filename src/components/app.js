@@ -9,7 +9,7 @@ const app = {
   loader: 0,
   countProgress: 0,
   dataLoaded: false,
-  hoverElements: ['.outside-link', '.nav-link', '.download-link', '.fp-controlArrow'],
+  hoverElements: ['.outside-link', '.nav-link', '.download-link', '.fp-controlArrow', '.about-section a'],
 
   init() {
     //add content
