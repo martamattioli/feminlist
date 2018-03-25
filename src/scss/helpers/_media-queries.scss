@@ -172,3 +172,10 @@
 //       line-height: 25px + 15;
 //     }
 // }
+@media all and (min-width: 1500px) {
+  .about-section {
+    section {
+      max-width: 1200px;
+    }
+  }
+}
