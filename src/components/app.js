@@ -12,6 +12,7 @@ const app = {
   hoverElements: ['.outside-link', '.nav-link', '.download-link', '.fp-controlArrow'],
 
   init() {
+    //add content
     content.addInitialContent();
 
     this.main = $('.main-container');
