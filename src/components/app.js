@@ -83,6 +83,7 @@ const app = {
     slides.getLastActiveSlides();
 
     this.enterSlides.parent().addClass('about-link');
+    this.about.children().addClass('two-children');
 
     window.history.pushState(null, null, '/about');
     this.about.fadeIn();
